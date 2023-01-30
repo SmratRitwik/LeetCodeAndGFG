@@ -8,7 +8,10 @@ class Solution {
     }
 public:
     int tribonacci(int n) {
-        fill();
+        if(n<=1)
+            return n;
+        if(arr[n]==0)
+            fill();
         return arr[n];
     }
 };
