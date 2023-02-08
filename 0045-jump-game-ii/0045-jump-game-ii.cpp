@@ -5,8 +5,8 @@ public:
         if (n <= 1) 
             return 0; 
       
-        if (arr[0] == 0) 
-            return -1; 
+        // if (arr[0] == 0) 
+        //     return -1; 
       
         int maxReach = arr[0];
         int step = arr[0];
@@ -25,13 +25,13 @@ public:
             { 
                 jump++; 
       
-                if(i >= maxReach) 
-                    return -1; 
+                // if(i >= maxReach) 
+                //     return -1; 
       
                 step = maxReach - i; 
             } 
         } 
-      
-        return -1; 
+      return jump;
+        // return -1; 
     }
 };
