@@ -1,66 +1,14 @@
 class Solution {
 public:
     string addBinary(string a, string b) {
-        string ans = "";
-        bool carry = 0;
-        int i=0;
-        reverse(a.begin(),a.end());
-        reverse(b.begin(),b.end());
-        while(i<a.length() || i<b.length()){
-            if(i<a.length()){
-                if(i<b.length()){
-                    if(a[i]=='1' && b[i]=='1'){
-                        if(carry==1)
-                            ans = "1" + ans;
-                        else
-                            ans = "0" + ans;
-                        carry = 1;
-                    }
-                    else if(a[i] == '0' && b[i] == '0'){
-                        if(carry==0)
-                            ans = "0" + ans;
-                        else
-                            ans = "1" + ans;
-                        carry = 0;
-                    }
-                    else{
-                        if(carry==0)
-                            ans = "1" + ans;
-                        else
-                            ans = "0" + ans;
-                    }
-                }
-                else{
-                    if(carry==1){
-                        if(a[i]=='1')
-                            ans = "0" + ans;
-                        else{
-                            ans = "1" +ans;
-                            carry = 0;
-                        }
-                    }
-                    else
-                        ans = a[i] + ans;
-                }
-            }
-            
-            else{
-                if(carry==1){
-                    if(b[i]=='1')
-                        ans = "0" + ans;
-                    else{
-                        ans = "1" +ans;
-                        carry = 0;
-                    }
-                }
-                else
-                    ans = b[i] + ans;
-               }
-            
-            i++;
+        auto output = ""s;
+        int i = a.size() - 1, j = b.size() - 1, carry = 0;
+        while (i >= 0 || j >= 0 || carry) {
+            if (i >= 0 && a[i--] == '1') ++carry;
+            if (j >= 0 && b[j--] == '1') ++carry;
+            output.insert(0, carry % 2 == 1 ? "1" : "0");
+            carry /= 2;
         }
-        if(carry==1)
-            ans = "1" + ans;
-        return ans;
+        return output;
     }
 };
