@@ -14,14 +14,8 @@ public:
         // code here
         long long int temp = __gcd(l, b);
         vector<long long int> ans;
-        if(temp==1){
-            ans.push_back(l*b);
-            ans.push_back(1);
-        }
-        else{
-            ans.push_back((max(l,b)/temp) * (min(l,b)/temp));
-            ans.push_back(temp);
-        }
+        ans.push_back((max(l,b)/temp) * (min(l,b)/temp));
+        ans.push_back(temp);
         return ans;
     }
 };
